@@ -1,0 +1,57 @@
+.loading {
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 17px;
+  border: 1px solid var(--white);
+  border-radius: 27px;
+  width: 260px;
+  height: 70px;
+  background-color: var(--gray);
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.desc {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 38px;
+  color: var(--black);
+}
+
+.button:hover {
+  background-color: transparent;
+}
+
+.button:hover .desc {
+  color: var(--white);
+}
+
+.button:focus {
+  background-color: transparent;
+}
+
+.button:focus .desc {
+  color: var(--white);
+}
+
+.button:active {
+  background-color: transparent;
+}
+
+.button:active .desc {
+  color: var(--white);
+}
