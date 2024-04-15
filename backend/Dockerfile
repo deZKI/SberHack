@@ -1,15 +1,15 @@
-FROM python:3.10-alpine
-
-ENV PYTHONUNBUFFERED=1
-
-# Install required system libraries including OpenBLAS
-RUN apk update && apk add build-base libffi-dev python3-dev openblas-dev
-
-# Install CFFI
-RUN apk add py3-cffi
+FROM python:3.12-slim
 
 WORKDIR /app
-COPY . /app
 
-# Install Python packages
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+ENV MODULE_NAME="main"
+
+EXPOSE 8000
+
+# Запускаем Uvicorn с нашим приложением
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
