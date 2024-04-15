@@ -1,0 +1,58 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 2px 17px;
+  border: 1px solid var(--gray3D);
+  border-radius: 100px;
+  width: 320px;
+  background-color: var(--grayF5);
+  overflow: hidden;
+  transition: border .3s ease;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px 0 0;
+}
+
+.button svg {
+  width: 24px;
+  height: 24px;
+}
+
+.button svg path {
+  fill: var(--gray3D);
+  transition: fill .3s ease;
+}
+
+.wrapper:hover {
+  border: 1px solid var(--blue1D);
+}
+
+.wrapper:hover .button svg path {
+  fill: var(--blue1D);
+}
+
+.wrapper:focus {
+  border: 1px solid var(--blue1D);
+}
+
+.wrapper:focus .button svg path {
+  fill: var(--blue1D);
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  font-family: "SB Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: center;
+  color: var(--gray3D);
+  text-align: start;
+}

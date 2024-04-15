@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  max-width: 218px;
+  height: 46px;
+  overflow: hidden;
+}
+
+.button {
+  padding: 18px 22px;
+  width: 50%;
+  font-family: "SB Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 38px;
+  color: var(--black);
+  background-color: var(--grayF5);
+}
+
+.active {
+  color: var(--white);
+  background: linear-gradient(90.00deg, rgb(182, 155, 255),rgb(29, 118, 255) 100%);
+}

@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+  background-color: var(--white); 
+}
+
+.wrapper {
+  display: flex;
+  padding: 130px 22px 22px 22px;
+  margin: 0 auto;
+  max-width: 1340px;
+}
+
+.cardWrapper {
+  margin: 0 50px 0 0;
+  width: 100%;
+}

@@ -1,0 +1,18 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--white);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .25));
+  z-index: var(--zindex-fixed);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 20px;
+  margin: 0 auto;
+  max-width: 1340px;
+}
