@@ -1,9 +1,0 @@
-.intro {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  background-image: url("../../assets/images/satellite.png"), url("../../assets/images/space-background.png");
-  background-repeat: no-repeat, no-repeat;
-  background-position: bottom right, center;
-  transition: all 1s ease;
-}
