@@ -1,0 +1,125 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 26px;
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .25);
+}
+
+.container:not(:first-child) {
+  margin: 30px 0 0 0;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+}
+
+.optional {
+  display: flex;
+  margin: 30px 0 0 0; 
+  width: 100%;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 38px 0 0;
+}
+
+.avatarImage {
+  border: 1px solid var(--blue1D);
+  border-radius: 50%;
+  width: 102px;
+  height: 102px;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.informationIdentity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 0 30px 0;
+  max-width: 370px;
+}
+
+.informationIdentityFullname {
+  margin: 0;
+  font-family: "SB Sans", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 30px;
+  color: var(--black);
+}
+
+.informationIdentityPosition {
+  margin: 0;
+  font-family: "SB Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--black);
+}
+
+.informationSkills {
+  display: flex;
+  align-items: center;
+}
+
+.informationSkillsList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.informationSkillsItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px;;
+  border-radius: 4px;
+  font-family: "SB Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  color: var(--white);
+  background: linear-gradient(90.00deg, rgb(182, 155, 255),rgb(29, 118, 255) 100%);
+}
+
+.informationSkillsItem:not(:last-child) {
+  margin: 0 10px 0 0;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 0 auto;
+}
+
+.button svg {
+  width: 50px;
+  height: 50px;
+  stroke: var(--black);
+  transition: stroke .3s ease;
+}
+
+.button:hover svg {
+  stroke: var(--blue1D);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--grayDE);
+}
