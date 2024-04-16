@@ -36,14 +36,14 @@
   height: 102px;
 }
 
-.information {
+.personality {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-.informationIdentity {
+.identity {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +52,7 @@
   max-width: 370px;
 }
 
-.informationIdentityFullname {
+.fullname {
   margin: 0;
   font-family: "SB Sans", sans-serif;
   font-size: 26px;
@@ -61,7 +61,7 @@
   color: var(--black);
 }
 
-.informationIdentityPosition {
+.position {
   margin: 0;
   font-family: "SB Sans", sans-serif;
   font-size: 18px;
@@ -70,19 +70,20 @@
   color: var(--black);
 }
 
-.informationSkills {
+.skills {
   display: flex;
   align-items: center;
 }
 
-.informationSkillsList {
+.list {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
+  gap: 10px;
 }
 
-.informationSkillsItem {
+.item {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,10 +95,6 @@
   line-height: 25px;
   color: var(--white);
   background: linear-gradient(90.00deg, rgb(182, 155, 255),rgb(29, 118, 255) 100%);
-}
-
-.informationSkillsItem:not(:last-child) {
-  margin: 0 10px 0 0;
 }
 
 .button {
@@ -118,8 +115,42 @@
   stroke: var(--blue1D);
 }
 
+.optional {
+  display: flex;
+  flex-direction: column;
+}
+
 .divider {
   width: 100%;
   height: 1px;
   background-color: var(--grayDE);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0 30px;
+  margin: 20px 0 0 0;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: "SB Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+  color: var(--black);
+}
+
+.desc {
+  font-family: "SB Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 25px;
+  color: var(--black);
 }

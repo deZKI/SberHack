@@ -9,8 +9,12 @@ export function Filter() {
         <h4 className={styles.title}>фильтр</h4>
         <span className={styles.icon}><FilterIcon /></span>
       </div>
-      <div></div>
-      <div></div>
+      <div className={styles.wrapper}>
+        <input className={styles.filter} type="text" />
+        <input className={styles.filter} type="text" />
+        <input className={styles.filter} type="text" />
+      </div>
+      <button className={styles.button}>Добавить</button>
     </div>
   );
 }
