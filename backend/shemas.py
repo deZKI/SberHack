@@ -1,6 +1,16 @@
-from pydantic import BaseModel
-from typing import List
+from pydantic import BaseModel, Field
 
-class MatchResult(BaseModel):
-    matches: List[str]
-    scores: List[float]
+
+class ResumeSchema(BaseModel):
+    content: str = Field(..., description="Content резюме.")
+    score: float = Field(..., description="Score from Elasticsearch.")
+
+
+class GigaChatAnswer(BaseModel):
+    description: str
+    resume: ResumeSchema
+
+
+class Answer(BaseModel):
+    gigachat_answer: GigaChatAnswer
+    resumes: list[ResumeSchema]

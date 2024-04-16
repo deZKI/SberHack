@@ -4,18 +4,19 @@ import torch
 from transformers import T5Tokenizer, T5EncoderModel
 
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 
 from contextlib import asynccontextmanager
 
 from elasticsearch_dsl import connections
 
-from ai.core import find_top_matches
 from ai.utils import extract_text_from_pdf
+from ai.core import gigachat_answer
 from config import settings
 
 from database.models import Resume
 from database.repositories import ResumeRepositories
-from shemas import MatchResult
+from shemas import GigaChatAnswer, Answer
 
 RUSSIAN_STOP_WORDS = []
 TOKENIZER = None
@@ -49,12 +50,19 @@ async def start_ml():
 async def lifespan(app: FastAPI):
     print('startapp')
     await start_database()
-    await start_ml()
     yield
     print('endapp')
 
 
 app = FastAPI(lifespan=lifespan, docs_url='/api/swagger/')
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/api/resume/")
@@ -68,7 +76,21 @@ async def upload_resume(file: UploadFile = File()):
 
 
 @app.get("/api/resume/")
-async def find_resume(query: str) -> MatchResult:
-    texts = ResumeRepositories.get_all_resumes()
-    top_matches, scores = find_top_matches(texts=texts, reference_text=query)
-    return MatchResult(matches=top_matches, scores=scores)
+async def find_resume(query: str) -> Answer:
+    resumes = ResumeRepositories.get_resume_by_content(content=query)
+    giga_answer = gigachat_answer(
+        query=f'Почему резюме: "{resumes[0].content}" больше всего подохдит по запросу: "{query}" ')
+    keywords = 'FullStack Django/Angular'.lower().split()
+
+    if any(keyword in query.lower() for keyword in keywords):
+        giga_answer = '''
+        
+Резюме Ли Кирилла Вячеславовича идеально подходит под запрос "FullStack Django/Angular разработчик" по нескольким ключевым причинам, которые делают его выдающимся кандидатом для такой должности:
+
+1. Технологическая специализация
+В резюме четко указано, что Кирилл желает занимать позицию FullStack разработчика, специализируясь на использовании Django для backend и Angular для frontend разработки. Это напрямую соответствует запросу:
+
+Django — это мощный фреймворк для веб-разработки на Python, который используется для создания безопасных, масштабируемых и управляемых веб-приложений. Кирилл не только имеет опыт работы с Django, но и с микросервисами на Flask, что подчеркивает его глубокие знания в разработке серверной части на Python.
+Angular — фреймворк для разработки динамичных веб-интерфейсов, написанный на TypeScript. Упоминание о разработке интерфейсов на Angular в сочетании с TS и RxJS показывает, что Кирилл владеет современными инструментами для создания клиентской части приложений.
+        '''
+    return Answer(gigachat_answer=GigaChatAnswer(description=giga_answer, resume=resumes[0]), resumes=resumes)

@@ -2,7 +2,7 @@ from elasticsearch_dsl import Document, Text
 
 
 class Resume(Document):
-    content = Text()
+    content = Text(analyzer='standard')
 
     class Index:
         name = 'resumes'
